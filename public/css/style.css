@@ -1,0 +1,189 @@
+:root {
+    
+    --poke-red: #ff3333; 
+    --poke-blue: #007bff; 
+    --poke-yellow: #ffde00;
+    --poke-bg-dark: #121212; 
+    --poke-surface: #1e1e1e; 
+    --card-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    --transition-speed: 0.3s;
+}
+
+body {
+    background-color: var(--poke-bg-dark);
+    font-family: 'Arial', sans-serif;
+    padding-bottom: 50px;
+    color: var(--poke-text-light);
+}
+
+h1 {
+    color: var(--poke-red);
+    text-align: center;
+    font-weight: 900;
+    text-shadow: 3px 3px var(--poke-blue); 
+    padding: 20px 0;
+    letter-spacing: 3px;
+    animation: fadeInDown 1s ease-out;
+}
+
+
+#filters {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: var(--poke-surface);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    animation: fadeInUp 1s ease-out;
+}
+
+
+#searchInput.form-control {
+    border: 2px solid var(--poke-blue);
+    background-color: #2a2a2a;
+    color: var(--poke-text-light);
+    transition: all var(--transition-speed);
+}
+
+#searchInput.form-control::placeholder {
+    color: #999;
+}
+
+#searchInput.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.5);
+    border-color: var(--poke-blue);
+}
+
+
+.type-btn {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+   
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform var(--transition-speed), opacity var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.type-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+.type-btn.active {
+    opacity: 0.7;
+    transform: scale(0.95);
+    background-color: var(--poke-blue); 
+    color: white;
+}
+
+.poke-card {
+    background-color: var(--poke-surface);
+    border: 5px solid var(--poke-yellow);
+    border-radius: 15px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: var(--card-shadow);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+}
+
+.poke-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9);
+    border-color: var(--poke-red);
+}
+
+.poke-card img {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.5s ease-in-out;
+
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
+}
+
+.poke-card:hover img {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.poke-card h3 {
+    color: var(--poke-text-light);
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.fav-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--poke-red);
+    font-size: 1.5rem;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+
+#pagination .btn {
+    background-color: var(--poke-blue);
+    border-color: var(--poke-blue);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+#pagination .btn:hover {
+    background-color: #0056b3; 
+    border-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+
+.modal-content {
+    background: radial-gradient(circle, #2c3e50 0%, var(--poke-surface) 100%) !important;
+    border-radius: 20px;
+    border: 3px solid var(--poke-yellow);
+}
+
+.modal.show .modal-content {
+    animation: zoomIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+
+.btn-close {
+    filter: invert(1); 
+    transition: transform 0.2s;
+}
+
+.btn-close:hover {
+    transform: rotate(90deg);
+    opacity: 1;
+}
+
+#modalName {
+    color: var(--poke-red);
+    text-shadow: 1px 1px var(--poke-blue);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+#pokemonGrid .col {
+    display: none; 
+}

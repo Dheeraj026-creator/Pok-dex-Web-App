@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Continue</title> <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: #e9ecef; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            background: white;
+            padding: 35px 45px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 320px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 600; 
+            margin-bottom: 5px;
+            color: #343a40;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #6c757d;
+            margin-bottom: 25px;
+            display: block;
+        }
+        .message-box {
+            background: #e9f7ef; 
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid #ced4da; 
+            cursor: pointer;
+            padding: 12px; 
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            width: 100%;
+            text-decoration: none; 
+            color: #343a40;
+        }
+        .google-btn:hover {
+            background: #f8f9fa;
+            border-color: #adb5bd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .google-icon {
+            width: 20px;
+            margin-right: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>Welcome Back!</h1>
+        <span class="subtitle">To continue, please log in first.</span>
+
+        <div class="message-box">
+            **Don't worry!** Your email ID is only stored temporarily in the session, not in the database. Your privacy is safe.
+        </div>
+
+        <a href="/auth/google" class="google-btn">
+           
+            Sign In with Google
+        </a>
+    </div>
+</body>
+</html>

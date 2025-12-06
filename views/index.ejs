@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pokédex Lite (Dark)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include("partials/navbar", { user: user }) %>
+
+    <div class="container py-4">
+        <h1>Pokédex Lite</h1>
+
+        <div id="filters" class="mb-4">
+            <div class="row g-3 align-items-center">
+                <div class="col-12 col-md-4">
+                    <input type="text" id="searchInput" class="form-control bg-dark text-white" placeholder="Search Pokémon by name...">
+                </div>
+                <div id="typeFilters" class="col-12 col-md-8 d-flex flex-wrap justify-content-md-end">
+                    <% types.forEach(type => { %>
+                        <button class="type-btn btn btn-sm btn-outline-light" data-type="<%= type %>"><%= type %></button>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 row-cols-xl-5 g-4" id="pokemonGrid">
+            <% 
+            // REMOVED: const limit = 20;
+            // The JavaScript will handle the visibility of the cards based on 'perPage'
+            pokemon.forEach(p => { %>
+                <div class="col">
+                    <div class="card poke-card h-100"
+                         data-name="<%= p.name.toLowerCase() %>"
+                         data-types="<%= p.types.join(',') %>"
+                         data-stats='<%= JSON.stringify(p.stats || []) %>'
+                         data-abilities='<%= JSON.stringify(p.abilities || []) %>'>
+
+                        <span class="fav-icon">&#10084;</span>
+                        <img src="<%= p.image %>" class="card-img-top mx-auto mt-3" alt="<%= p.name %>" style="max-height: 120px; width: auto;">
+                        <div class="card-body">
+                            <h3 class="card-title"><%= p.name %></h3>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+
+        <div id="pagination" class="d-flex justify-content-center mt-5">
+            <button class="btn btn-primary" id="prevBtn">Previous</button>
+            <button class="btn btn-primary ms-3" id="nextBtn">Next</button>
+        </div>
+
+        <div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="pokemonModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered">
+                <div id="modalContent" class="modal-content"> 
+                    <button type="button" class="btn-close" id="closeModal" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body text-center">
+                        <h2 id="modalName" class="modal-title text-white"></h2>
+                        <img id="modalImage" src="" alt="" class="mb-3" width="120">
+                        <p id="modalTypes" class="badge bg-info p-2 text-dark"></p>
+                        <p id="modalStats" class="text-start text-white"></p>
+                        <p id="modalAbilities" class="text-start text-white"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
