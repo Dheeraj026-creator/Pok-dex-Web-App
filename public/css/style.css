@@ -110,7 +110,7 @@ h1 {
 }
 
 .poke-card h3 {
-    color: var(--poke-text-light);
+    color:whitesmoke;
     font-weight: 700;
     margin-top: 10px;
 }
