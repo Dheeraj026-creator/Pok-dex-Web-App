@@ -6,8 +6,12 @@ import { fileURLToPath } from "url";
 import passport from "passport";
 import session from "express-session";
 import "./config/passport.js";   
-import dotenv from "dotenv";
-dotenv.config();
+// This is more complex and usually avoided for simple config loading
+if (process.env.NODE_ENV !== "production") {
+    import('dotenv').then(module => {
+        module.config();
+    });
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
